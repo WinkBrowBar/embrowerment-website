@@ -23,10 +23,12 @@ import { Route as ReturnsRouteImport } from './routes/returns'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as AcademyIndexRouteImport } from './routes/academy.index'
 import { Route as AcademySlugRouteImport } from './routes/academy.$slug'
+import { Route as ApiSplatRouteImport } from './routes/api.$'
 import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
 import { Route as LearnSlugRouteImport } from './routes/learn.$slug'
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
 import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
+import { Route as UploadsSplatRouteImport } from './routes/uploads.$'
 import { Route as AccountOrdersIdRouteImport } from './routes/account_.orders.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -99,6 +101,11 @@ const AcademySlugRoute = AcademySlugRouteImport.update({
   path: '/academy/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiSplatRoute = ApiSplatRouteImport.update({
+  id: '/api/$',
+  path: '/api/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
   id: '/checkout/success',
   path: '/checkout/success',
@@ -117,6 +124,11 @@ const ShopIndexRoute = ShopIndexRouteImport.update({
 const ShopSlugRoute = ShopSlugRouteImport.update({
   id: '/shop/$slug',
   path: '/shop/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UploadsSplatRoute = UploadsSplatRouteImport.update({
+  id: '/uploads/$',
+  path: '/uploads/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccountOrdersIdRoute = AccountOrdersIdRouteImport.update({
@@ -139,9 +151,11 @@ export interface FileRoutesByFullPath {
   '/returns': typeof ReturnsRoute
   '/wishlist': typeof WishlistRoute
   '/academy/$slug': typeof AcademySlugRoute
+  '/api/$': typeof ApiSplatRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/uploads/$': typeof UploadsSplatRoute
   '/academy/': typeof AcademyIndexRoute
   '/shop/': typeof ShopIndexRoute
   '/account/orders/$id': typeof AccountOrdersIdRoute
@@ -160,9 +174,11 @@ export interface FileRoutesByTo {
   '/returns': typeof ReturnsRoute
   '/wishlist': typeof WishlistRoute
   '/academy/$slug': typeof AcademySlugRoute
+  '/api/$': typeof ApiSplatRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/uploads/$': typeof UploadsSplatRoute
   '/academy': typeof AcademyIndexRoute
   '/shop': typeof ShopIndexRoute
   '/account/orders/$id': typeof AccountOrdersIdRoute
@@ -182,9 +198,11 @@ export interface FileRoutesById {
   '/returns': typeof ReturnsRoute
   '/wishlist': typeof WishlistRoute
   '/academy/$slug': typeof AcademySlugRoute
+  '/api/$': typeof ApiSplatRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/uploads/$': typeof UploadsSplatRoute
   '/academy/': typeof AcademyIndexRoute
   '/shop/': typeof ShopIndexRoute
   '/account_/orders/$id': typeof AccountOrdersIdRoute
@@ -205,9 +223,11 @@ export interface FileRouteTypes {
     | '/returns'
     | '/wishlist'
     | '/academy/$slug'
+    | '/api/$'
     | '/checkout/success'
     | '/learn/$slug'
     | '/shop/$slug'
+    | '/uploads/$'
     | '/academy/'
     | '/shop/'
     | '/account/orders/$id'
@@ -226,9 +246,11 @@ export interface FileRouteTypes {
     | '/returns'
     | '/wishlist'
     | '/academy/$slug'
+    | '/api/$'
     | '/checkout/success'
     | '/learn/$slug'
     | '/shop/$slug'
+    | '/uploads/$'
     | '/academy'
     | '/shop'
     | '/account/orders/$id'
@@ -247,9 +269,11 @@ export interface FileRouteTypes {
     | '/returns'
     | '/wishlist'
     | '/academy/$slug'
+    | '/api/$'
     | '/checkout/success'
     | '/learn/$slug'
     | '/shop/$slug'
+    | '/uploads/$'
     | '/academy/'
     | '/shop/'
     | '/account_/orders/$id'
@@ -269,9 +293,11 @@ export interface RootRouteChildren {
   ReturnsRoute: typeof ReturnsRoute
   WishlistRoute: typeof WishlistRoute
   AcademySlugRoute: typeof AcademySlugRoute
+  ApiSplatRoute: typeof ApiSplatRoute
   CheckoutSuccessRoute: typeof CheckoutSuccessRoute
   LearnSlugRoute: typeof LearnSlugRoute
   ShopSlugRoute: typeof ShopSlugRoute
+  UploadsSplatRoute: typeof UploadsSplatRoute
   AcademyIndexRoute: typeof AcademyIndexRoute
   ShopIndexRoute: typeof ShopIndexRoute
   AccountOrdersIdRoute: typeof AccountOrdersIdRoute
@@ -377,6 +403,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AcademySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/$': {
+      id: '/api/$'
+      path: '/api/$'
+      fullPath: '/api/$'
+      preLoaderRoute: typeof ApiSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/checkout/success': {
       id: '/checkout/success'
       path: '/checkout/success'
@@ -405,6 +438,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/uploads/$': {
+      id: '/uploads/$'
+      path: '/uploads/$'
+      fullPath: '/uploads/$'
+      preLoaderRoute: typeof UploadsSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/account_/orders/$id': {
       id: '/account_/orders/$id'
       path: '/account/orders/$id'
@@ -429,9 +469,11 @@ const rootRouteChildren: RootRouteChildren = {
   ReturnsRoute: ReturnsRoute,
   WishlistRoute: WishlistRoute,
   AcademySlugRoute: AcademySlugRoute,
+  ApiSplatRoute: ApiSplatRoute,
   CheckoutSuccessRoute: CheckoutSuccessRoute,
   LearnSlugRoute: LearnSlugRoute,
   ShopSlugRoute: ShopSlugRoute,
+  UploadsSplatRoute: UploadsSplatRoute,
   AcademyIndexRoute: AcademyIndexRoute,
   ShopIndexRoute: ShopIndexRoute,
   AccountOrdersIdRoute: AccountOrdersIdRoute,

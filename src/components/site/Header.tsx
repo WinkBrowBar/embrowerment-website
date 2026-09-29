@@ -4,7 +4,6 @@ import { IMG, LINKS } from "./data";
 import { useStore } from "./store";
 
 const nav = [
-  ["The Method", LINKS.method],
   ["Permanent makeup", LINKS.pmu],
   ["Shop", "/shop"],
   ["Academy", "/academy"],
@@ -18,7 +17,7 @@ export function Header() {
   return <>
     <header className="hdr">
       <Link to="/" className="hdr-logo" aria-label="Embrowerment home"><img src={IMG.logo} alt="Embrowerment" /></Link>
-      <nav className="hdr-nav">{nav.map(([l, h]) => <Link key={l} to={h} activeProps={{ className: "active" }}>{l}</Link>)}<span>Foundation</span></nav>
+      <nav className="hdr-nav">{nav.map(([l, h]) => <Link key={l} to={h} activeProps={{ className: "active" }}>{l}</Link>)}</nav>
       <div className="hdr-util">
         <Link to={user ? "/account" : "/login"} className="hide-sm">{user ? "Account" : "Login Account"}</Link>
         <button className="hdr-cart" onClick={() => setDrawer(true)} aria-label={`Cart, ${count} items`}>Cart ({count})</button>
@@ -29,7 +28,6 @@ export function Header() {
     </header>
     <div className={`hdr-drawer${open ? " open" : ""}`}>
       {nav.map(([l, h]) => <Link key={l} to={h}>{l}</Link>)}
-      <span>Foundation</span>
       <Link to={user ? "/account" : "/login"}>{user ? "Account" : "Login Account"}</Link>
       {user && <Link to="/wishlist">Wishlist</Link>}
     </div>

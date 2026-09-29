@@ -27,8 +27,8 @@ export function PageHero({ title, kicker, children, image, alt }: { title: React
   </section>;
 }
 
-export function Accordion({ items }: { items: { q: string; a: ReactNode }[] }) {
-  const [open, setOpen] = useState<number | null>(0);
+export function Accordion({ items, defaultOpen = 0 }: { items: { q: string; a: ReactNode }[]; defaultOpen?: number | null }) {
+  const [open, setOpen] = useState<number | null>(defaultOpen);
   return <div className="acc">
     {items.map((it, i) => <div className={`acc-item${open === i ? " open" : ""}`} key={it.q}>
       <button className="acc-q" aria-expanded={open === i} onClick={() => setOpen(open === i ? null : i)}>

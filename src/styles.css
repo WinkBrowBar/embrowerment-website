@@ -746,3 +746,10 @@ img { display: block; max-width: 100%; }
 /* ---------- COMING SOON ---------- */
 .ctile-img .tag, .pdp-img .tag { position: absolute; left: calc(var(--mat, 14px) + 8px); top: calc(var(--mat, 14px) + 8px); z-index: 2; background: var(--ink); color: var(--on-ink); font-family: var(--head); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 6px 10px; }
 .phero-body .row .btn-mono { padding: 17px 30px; }
+
+/* ---------- FAQ: two balanced columns ---------- */
+.feat.split.dark { grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 72px); }
+.faq-col { display: flex; flex-direction: column; min-width: 0; }
+.faq-col h2 { margin-bottom: clamp(24px, 3vw, 40px); }
+.faq-col:last-child { padding-top: calc(clamp(40px, 5.5vw, 96px) * 0.92 + clamp(24px, 3vw, 40px)); }
+@media (max-width: 820px) { .feat.split.dark { grid-template-columns: 1fr; } .faq-col:last-child { padding-top: 0; } .faq-col:last-child .acc { border-top: 0; } }

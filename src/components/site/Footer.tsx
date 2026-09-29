@@ -22,7 +22,7 @@ export function Footer() {
         <p className="sub-note">We respect your privacy.</p>
       </div>
       <div><h4>Orders &amp; Support</h4><ul className="gap"><li><Link to="/pmu-policies">PMU Policies</Link></li><li><Link to="/returns">Returns</Link></li></ul></div>
-      <div><h4>Embrowerment®</h4><ul><li><a href={LINKS.winkBrowBar} target="_blank" rel="noreferrer">Wink Brow Bar</a></li><li><a href={LINKS.umbreen} target="_blank" rel="noreferrer">Umbreen</a></li><li>Foundation</li></ul></div>
+      <div><h4>Embrowerment®</h4><ul><li><a href={LINKS.winkBrowBar} target="_blank" rel="noreferrer">Wink Brow Bar</a></li></ul></div>
       <div><h4>Follow</h4><ul><li><a href={LINKS.instagram} target="_blank" rel="noreferrer">INSTAGRAM</a></li><li><a href={LINKS.tiktok}>TIKTOK</a></li><li>FACEBOOK</li></ul></div>
     </div>
     <svg className="ftr-mark" viewBox="0 0 1000 90" aria-hidden="true"><text x="0" y="89" fontSize="122" fill="currentColor" textLength="1000" lengthAdjust="spacing">EMBROWERMENT</text></svg>
