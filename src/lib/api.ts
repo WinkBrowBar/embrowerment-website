@@ -3,7 +3,11 @@ const isServer = typeof window === "undefined";
 // During SSR the web server calls the API itself. On AWS it may need a private/internal address
 // (e.g. http://10.0.1.23:4000 or http://api.internal:4000) — set API_INTERNAL_URL on the web server.
 const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env ?? {};
-const BASE = isServer ? (env["API_INTERNAL_URL"] || env["VITE_API_URL"] || API) : API;
+// In the browser: an https page can't call an http API (mixed content). In that case use the
+// same-origin /api path, which the host (e.g. Amplify rewrite / CloudFront / nginx) proxies to the API.
+const sameOriginProxy = !isServer && window.location.protocol === "https:" && API.startsWith("http:");
+export const BROWSER_API = sameOriginProxy ? "" : API;
+const BASE = isServer ? (env["API_INTERNAL_URL"] || env["VITE_API_URL"] || API) : BROWSER_API;
 
 export class ApiError extends Error {
   constructor(public status: number, message: string, public details?: { path: string; message: string }[]) { super(message); }
