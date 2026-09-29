@@ -12,8 +12,8 @@ var API = {
 	"TSS_INLINE_CSS_ENABLED": "false",
 	"TSS_ROUTER_BASEPATH": "",
 	"TSS_SERVER_FN_BASE": "/_serverFn/",
-	"VITE_API_URL": "http://localhost:4001"
-}["VITE_API_URL"] || "http://localhost:4000";
+	"VITE_API_URL": "http://51.21.191.236:4001"
+}["VITE_API_URL"] || "http://51.21.191.236:4001";
 var ApiError = class extends Error {
 	status;
 	details;
