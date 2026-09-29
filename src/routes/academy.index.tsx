@@ -6,7 +6,6 @@ import { PageHero, useStore, WishButton, IMG, SafeImg } from "@/components/site"
 export const Route = createFileRoute("/academy/")({
   loader: () => api<{ courses: Course[] }>("/courses"),
   head: () => ({ meta: [{ title: "Academy — Embrowerment®" }, { name: "description", content: "Online brow courses from the Embrowerment® Academy." }] }),
-  errorComponent: () => <PageHero title="Academy ."><p>Courses are temporarily unavailable. Please try again shortly.</p></PageHero>,
   component: Academy,
 });
 

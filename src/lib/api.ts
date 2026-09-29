@@ -1,14 +1,23 @@
-// export const API = (import.meta.env["VITE_API_URL"] as string | undefined) || "http://localhost:4000";
-export const API =  "http://51.21.191.236:4001";
+export const API = (import.meta.env["VITE_API_URL"] as string | undefined) || "http://localhost:4000";
+const isServer = typeof window === "undefined";
+// During SSR the web server calls the API itself. On AWS it may need a private/internal address
+// (e.g. http://10.0.1.23:4000 or http://api.internal:4000) — set API_INTERNAL_URL on the web server.
+const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env ?? {};
+const BASE = isServer ? (env["API_INTERNAL_URL"] || env["VITE_API_URL"] || API) : API;
 
 export class ApiError extends Error {
   constructor(public status: number, message: string, public details?: { path: string; message: string }[]) { super(message); }
 }
 
 export async function api<T = any>(path: string, opts: { method?: string; body?: unknown } = {}): Promise<T> {
-  const init: RequestInit = { method: opts.method || (opts.body ? "POST" : "GET"), credentials: "include" };
+  const method = opts.method || (opts.body ? "POST" : "GET");
+  const init: RequestInit = { method, credentials: "include" };
   if (opts.body) { init.headers = { "Content-Type": "application/json" }; init.body = JSON.stringify(opts.body); }
-  const res = await fetch(`${API}/api${path}`, init);
+  // Timeout + one retry for GETs on network failure (cold starts, dropped connections).
+  const attempt = () => fetch(`${BASE}/api${path}`, { ...init, signal: AbortSignal.timeout(isServer ? 7000 : 20000) });
+  let res: Response;
+  try { res = await attempt(); }
+  catch (e) { if (method !== "GET") throw e; await new Promise(r => setTimeout(r, 400)); res = await attempt(); }
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new ApiError(res.status, data.details?.[0]?.message || data.error || "Something went wrong", data.details);
   return data as T;

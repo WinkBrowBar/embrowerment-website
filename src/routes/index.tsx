@@ -10,7 +10,7 @@ export const Route = createFileRoute("/")({
     { property: "og:description", content: "Confidence begins in the eye zone. A method for brows - a mindset for life." },
     { property: "og:image", content: "/images/hero.webp" },
   ] }),
-  loader: () => api<{ products: Product[] }>("/products").then(d => d.products).catch(() => [] as Product[]),
+  loader: () => api<{ products: Product[] }>("/products").then(d => d.products).catch(e => { if (typeof window === "undefined") throw e; return [] as Product[]; }),
   component: Index,
 });
 

@@ -8,7 +8,6 @@ export const Route = createFileRoute("/shop/")({
   loaderDeps: ({ search }) => ({ category: search.category }),
   loader: ({ deps }) => api<{ products: Product[]; categories: string[] }>(`/products${deps.category ? `?category=${encodeURIComponent(deps.category)}` : ""}`),
   head: () => ({ meta: [{ title: "Shop — Embrowerment®" }, { name: "description", content: "Discover essentials that bring confidence to your every day with intention." }] }),
-  errorComponent: () => <section className="phero phero--text"><div className="phero-text"><h1 className="h-display">Shop</h1><div className="phero-body"><p>The shop is temporarily unavailable. Please try again shortly.</p></div></div></section>,
   component: Shop,
 });
 
