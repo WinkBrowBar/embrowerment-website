@@ -23,10 +23,13 @@ export function CourseCard({ c }: { c: Course }) {
     <div className="pcard-img">
       <Link to="/academy/$slug" params={{ slug: c.slug }}><SafeImg src={c.image} alt={c.title} loading="lazy" /></Link>
       <div className="pcard-wish"><WishButton kind="course" id={c.id} label={false} /></div>
+      {c.comingSoon && <span className="tag">Coming soon</span>}
     </div>
     <div className="card-meta"><Link to="/academy/$slug" params={{ slug: c.slug }}><h3>{c.title}</h3></Link><span className="card-price">{money(c.price)}</span></div>
     {c.points.length > 0 && <ul>{c.points.map(p => <li key={p}>{p}</li>)}</ul>}
     {c.owned ? <Link to="/learn/$slug" params={{ slug: c.slug }} className="btn-solid">Start course</Link>
+      : c.comingSoon ? <button className="btn-mono" disabled>Coming soon</button>
+      : c.purchaseUrl ? <a className="btn-mono" href={c.purchaseUrl} target="_blank" rel="noopener noreferrer">Purchase Course</a>
       : <button className="btn-mono" onClick={() => add({ kind: "course", ref: c.id, qty: 1 })}>Purchase Course</button>}
   </article>;
 }
