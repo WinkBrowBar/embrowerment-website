@@ -1,4 +1,4 @@
-export const API = (import.meta.env["VITE_API_URL"] as string | undefined) || "http://localhost:4000";
+export const API = (import.meta.env["VITE_API_URL"] as string | undefined) || "http://51.21.191.236:4001";
 const isServer = typeof window === "undefined";
 // During SSR the web server calls the API itself. On AWS it may need a private/internal address
 // (e.g. http://10.0.1.23:4000 or http://api.internal:4000) — set API_INTERNAL_URL on the web server.
