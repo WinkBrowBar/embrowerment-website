@@ -201,7 +201,9 @@ img { display: block; max-width: 100%; }
 @media (max-width: 960px) {
   .hdr-nav, .hdr-util .hide-sm { display: none; }
   .hdr-burger { display: block; }
-  .hdr-drawer.open { display: flex; flex-direction: column; gap: 22px; position: fixed; inset: 58px 0 0 0; background: var(--ink); padding: 40px var(--gutter); font-family: var(--head); font-size: 32px; font-weight: 700; letter-spacing: -0.03em; z-index: 49; }
+  .hdr-drawer.open { display: flex; flex-direction: column; gap: 22px; position: fixed; inset: 58px 0 0 0; background: var(--ink); color: var(--on-ink); padding: 40px var(--gutter); font-family: var(--head); font-size: 32px; font-weight: 700; letter-spacing: -0.03em; z-index: 49; }
+  .hdr-drawer a { color: var(--on-ink); padding-bottom: 18px; border-bottom: 1px solid var(--line-dark); }
+  .hdr-drawer a.active { text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 2px; }
 }
 
 /* ---------- HERO ---------- */
