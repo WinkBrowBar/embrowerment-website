@@ -11,9 +11,9 @@ export const Route = createFileRoute("/method")({
 });
 
 const CARDS = [
-  { title: "Get Certified", text: "Master the Embrowerment® Method through our professional training and certification program.", cta: "Get Certified", href: "/academy", img: IMG.studio[0] },
-  { title: "Become an Embrowerment PMU Artist", text: "Join a growing network of artists united by one methodology, shared standards and a commitment to exceptional artistry.", cta: "Join the Network", href: "/semi-permanent-makeup", img: IMG.studio[1] },
-  { title: "Careers", text: "Begin your career with Embrowerment® through hands-on training, mentorship and a clear path to certification.", cta: "Apply for the Embrowerment Apprenticeship Program", href: "#inquire", img: IMG.studio[2] },
+  { title: "Get Certified", text: "Master the Embrowerment® Method through our professional training and certification program.", cta: "Get Certified", href: "/academy", img: "/images/method-certified.webp" },
+  { title: "Become an Embrowerment PMU Artist", text: "Join a growing network of artists united by one methodology, shared standards and a commitment to exceptional artistry.", cta: "Join the Network", href: "/semi-permanent-makeup", img: "/images/method-artist.webp" },
+  { title: "Careers", text: "Begin your career with Embrowerment® through hands-on training, mentorship and a clear path to certification.", cta: "Apply for the Embrowerment Apprenticeship Program", href: "#inquire", img: "/images/method-careers.webp" },
 ];
 
 function MethodPage() {
