@@ -20,6 +20,7 @@ import { Route as PmuPoliciesRouteImport } from './routes/pmu-policies'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ReturnsRouteImport } from './routes/returns'
+import { Route as SemiPermanentMakeupRouteImport } from './routes/semi-permanent-makeup'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as AcademyIndexRouteImport } from './routes/academy.index'
 import { Route as AcademySlugRouteImport } from './routes/academy.$slug'
@@ -86,6 +87,11 @@ const ReturnsRoute = ReturnsRouteImport.update({
   path: '/returns',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SemiPermanentMakeupRoute = SemiPermanentMakeupRouteImport.update({
+  id: '/semi-permanent-makeup',
+  path: '/semi-permanent-makeup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WishlistRoute = WishlistRouteImport.update({
   id: '/wishlist',
   path: '/wishlist',
@@ -149,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/returns': typeof ReturnsRoute
+  '/semi-permanent-makeup': typeof SemiPermanentMakeupRoute
   '/wishlist': typeof WishlistRoute
   '/academy/$slug': typeof AcademySlugRoute
   '/api/$': typeof ApiSplatRoute
@@ -172,6 +179,7 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/returns': typeof ReturnsRoute
+  '/semi-permanent-makeup': typeof SemiPermanentMakeupRoute
   '/wishlist': typeof WishlistRoute
   '/academy/$slug': typeof AcademySlugRoute
   '/api/$': typeof ApiSplatRoute
@@ -196,6 +204,7 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/returns': typeof ReturnsRoute
+  '/semi-permanent-makeup': typeof SemiPermanentMakeupRoute
   '/wishlist': typeof WishlistRoute
   '/academy/$slug': typeof AcademySlugRoute
   '/api/$': typeof ApiSplatRoute
@@ -221,6 +230,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/reset-password'
     | '/returns'
+    | '/semi-permanent-makeup'
     | '/wishlist'
     | '/academy/$slug'
     | '/api/$'
@@ -244,6 +254,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/reset-password'
     | '/returns'
+    | '/semi-permanent-makeup'
     | '/wishlist'
     | '/academy/$slug'
     | '/api/$'
@@ -267,6 +278,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/reset-password'
     | '/returns'
+    | '/semi-permanent-makeup'
     | '/wishlist'
     | '/academy/$slug'
     | '/api/$'
@@ -291,6 +303,7 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   ReturnsRoute: typeof ReturnsRoute
+  SemiPermanentMakeupRoute: typeof SemiPermanentMakeupRoute
   WishlistRoute: typeof WishlistRoute
   AcademySlugRoute: typeof AcademySlugRoute
   ApiSplatRoute: typeof ApiSplatRoute
@@ -382,6 +395,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReturnsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/semi-permanent-makeup': {
+      id: '/semi-permanent-makeup'
+      path: '/semi-permanent-makeup'
+      fullPath: '/semi-permanent-makeup'
+      preLoaderRoute: typeof SemiPermanentMakeupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/wishlist': {
       id: '/wishlist'
       path: '/wishlist'
@@ -467,6 +487,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   ReturnsRoute: ReturnsRoute,
+  SemiPermanentMakeupRoute: SemiPermanentMakeupRoute,
   WishlistRoute: WishlistRoute,
   AcademySlugRoute: AcademySlugRoute,
   ApiSplatRoute: ApiSplatRoute,

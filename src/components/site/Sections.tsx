@@ -9,10 +9,12 @@ export function Method() {
     <Ph src={IMG.method} alt="Model framing her face with raised arms in soft sunlight" />
     <div className="method-body reveal">
       <span className="work-no">01 — The Method</span>
-      <h2 className="h-display">The <em className="acad-hl">Method.</em></h2>
+      <h2 className="h-display method-title">One Method. <em className="acad-hl">One Standard.</em> Wherever You Go.</h2>
       <div className="feat-copy">
-        <p>A structured, science-led approach to the eye zone. Every brow is mapped to bone structure, growth pattern and facial balance before a single hair is touched, then managed over time so the shape stays yours.</p>
-        <More href={LINKS.method}>Learn more</More>
+        <p>The Embrowerment® Method is our proprietary, science-led approach to permanent makeup artistry. Every Embrowerment-certified artist is trained in the same principles of facial anatomy, precision, technique and aesthetic balance.</p>
+        <p>Through standardized education, protocols and ongoing professional development, we create consistency across our network - so wherever you choose an Embrowerment-certified artist, you can expect the same commitment to quality, safety and artistry.</p>
+        <p className="method-tagline">One methodology. A network of artists. A standard you can trust.</p>
+        <More href={LINKS.method}>Discover the Method</More>
       </div>
     </div>
   </section>;

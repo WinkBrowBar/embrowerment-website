@@ -2,6 +2,7 @@ export function Definition() {
   return <section className="define home-define" id="about-embrowerment">
     <div className="define-head reveal">
       <span className="eyebrow">What is Embrowerment®</span>
+      <span className="home-since">Since 2014</span>
       <h2 className="h-display">Em·brow·er·ment<span className="home-noun"> (noun)</span></h2>
       <p className="phon"><em>/i m-b r o u e r-m e n t/</em></p>
     </div>
