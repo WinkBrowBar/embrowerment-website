@@ -1141,3 +1141,5 @@ a.cl-card:hover .cl-go { transform: translateX(4px); }
 .mhero-img img { aspect-ratio: 5 / 6; max-height: 640px; }
 .method-quote { padding: clamp(48px, 6vw, 88px) var(--gutter); gap: 0; }
 @media (max-width: 900px) { .mhero { grid-template-columns: 1fr; } .mhero-img { max-width: 420px; } }
+/* "View the lookbook" jumps here; keep it clear of the sticky header */
+#portfolio { scroll-margin-top: 72px; }

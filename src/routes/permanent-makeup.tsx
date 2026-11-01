@@ -62,7 +62,7 @@ function PriceList({ title, rows }: { title: string; rows: Row[] }) {
 
 function PMU() {
   const book = <SmartLink href={LINKS.consult} className="btn-solid">Book a consultation</SmartLink>;
-  const lookbook = <SmartLink href={LINKS.lookbook} className="btn-mono">View the lookbook</SmartLink>;
+  const lookbook = <SmartLink href="#portfolio" className="btn-mono">View the lookbook</SmartLink>;
   return <div className="pmu">
     <PageHero title="Permanent makeup" image={IMG.products1} alt="Woman with a glowing natural makeup look">
       <div className="row">{book}{lookbook}</div>

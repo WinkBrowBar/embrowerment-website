@@ -33,7 +33,7 @@ export function WorkGallery() {
     return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = prev; };
   }, [open, step]);
 
-  return <section className="work" aria-labelledby="work-title">
+  return <section className="work" id="portfolio" aria-labelledby="work-title">
     <header className="work-top">
       <div className="work-title">
         <span className="eyebrow">The portfolio <i>Nº 01 — {PMU_WORK.length}</i></span>
