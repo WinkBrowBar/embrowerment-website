@@ -4,7 +4,7 @@ export const LINKS = {
   pmu: "/permanent-makeup",
   pmuPolicies: "/pmu-policies",
   returns: "/returns",
-  umbreen: "https://www.umbreen.com/about",
+  umbreen: "https://www.umbreen.com",
   umbreenSite: "https://www.umbreen.com",
   foundation: "https://www.embrowermentfoundation.org", // TODO: confirm the Foundation domain
   winkBrowBar: "https://www.winkbrowbar.com",

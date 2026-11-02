@@ -40,11 +40,11 @@ const c = (slug: string, title: string, formats: AcademyFormat[], blurb: string,
 export const ACADEMY_COURSES: AcademyCourse[] = [
   c("threading", "Threading", ["hybrid", "inperson"], "Signature brow threading with organic cotton thread, plus full-face threading.", IMG.academy),
   c("waxing", "Waxing", ["hybrid", "inperson"], "Brow mapping and sculpted arches with chocolate wax, plus facial waxing.", IMG.method),
-  c("brow-extensions", "Brow Extensions", ["hybrid"], "Custom-matched fibers for fullness and shape, and refills after shedding.", IMG.pmu[0]),
-  c("keratin-brow-lamination", "Keratin Brow Lamination", ["online", "hybrid"], "The 3-step lift and set, plus the lamination, tint and shape combo.", IMG.products1),
-  c("tinting", "Tinting", ["online", "hybrid"], "Classic and premium brow and lash tint, hybrid stain and lightening.", IMG.products2),
+  c("brow-extensions", "Brow Extensions", ["hybrid", "inperson"], "Custom-matched fibers for fullness and shape, and refills after shedding.", IMG.pmu[0]),
+  c("keratin-brow-lamination", "Keratin Brow Lamination", ["online", "hybrid", "inperson"], "The 3-step lift and set, plus the lamination, tint and shape combo.", IMG.products1),
+  c("tinting", "Tinting", ["online", "hybrid", "inperson"], "Classic and premium brow and lash tint, hybrid stain and lightening.", IMG.products2),
   c("lash-extensions", "Lash Extensions", ["hybrid", "inperson"], "Classic single lash sets, express sets and strip application.", IMG.hero),
-  c("lash-lifting", "Lash Lifting", ["online", "hybrid"], "Keratin and premium lash lifts with tint.", IMG.products3),
+  c("lash-lifting", "Lash Lifting", ["online", "hybrid", "inperson"], "Keratin and premium lash lifts with tint.", IMG.products3),
   c("semi-permanent-makeup", "Semi-Permanent Makeup", ["hybrid", "inperson"], "Nanoblading, microblading, microshading, ombré brows and liner, the Embrowerment® way.", IMG.pmu[1]),
 ];
 
