@@ -75,9 +75,9 @@ export function Academy() {
       {ACADEMY_COURSES.map((c, i) => <li key={c.slug}><a href="/academy#courses"><span className="work-no">{String(i + 1).padStart(2, "0")}</span>{c.title}<span aria-hidden="true">→</span></a></li>)}
     </ul>
     <div className="grid-3 home-academy-photos">
-      <Ph src={IMG.academy} alt="Close-up of an eye and a defined brow" />
-      <Ph src={IMG.studio[1]} alt="Globe lamp and swatches on a dark console" />
-      <Ph src={IMG.studio[0]} alt="Hands working with material samples on a wooden table" />
+      <Ph src="/images/pmu-work/23.webp" alt="Embrowerment® educator mapping a client's brows with a hand mirror" />
+      <Ph src="/images/pmu-work/11.webp" alt="Embrowerment® artist performing semi-permanent brow work" />
+      <Ph src="/images/pmu-work/45.webp" alt="Embrowerment® artist shaping a client's brows" />
     </div>
   </section>;
 }
