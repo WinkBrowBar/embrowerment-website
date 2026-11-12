@@ -94,10 +94,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+// Awin: MasterTag + carry the affiliate click ID (awc) onto every shop.embrowerment.com link
+const AWIN_MERCHANT_ID = "131859";
+const AWIN_AWC_SCRIPT = `(function(){
+  var KEY='awc',TTL=30*864e5,awc=null;
+  try{
+    awc=new URLSearchParams(location.search).get('awc');
+    if(awc) localStorage.setItem(KEY,JSON.stringify({v:awc,t:Date.now()}));
+    else{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&Date.now()-s.t<TTL) awc=s.v;}
+  }catch(e){}
+  if(!awc) return;
+  function tag(e){
+    var a=e.target&&e.target.closest&&e.target.closest('a[href*="shop.embrowerment.com"]');
+    if(!a) return;
+    try{var u=new URL(a.href);u.searchParams.set('awc',awc);a.href=u.toString();}catch(e){}
+  }
+  document.addEventListener('click',tag,true);
+  document.addEventListener('auxclick',tag,true);
+})();`;
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: AWIN_AWC_SCRIPT }} />
+        <script src={`https://www.dwin1.com/${AWIN_MERCHANT_ID}.js`} defer />
         <HeadContent />
       </head>
       <body>
