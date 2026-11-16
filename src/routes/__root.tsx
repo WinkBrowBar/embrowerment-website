@@ -76,6 +76,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Confidence begins in the eye zone." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "google-site-verification", content: "WaDusbFf_R633GxxX6GQSlZVQ-vlIE914yhcM7F0Na4" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
