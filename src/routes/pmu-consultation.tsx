@@ -161,8 +161,6 @@ function PmuConsultation() {
         {err("accutane")}
       </fieldset>
 
-      <p className="pcf-note">Please note pregnant clients are not able to do PMU Services.</p>
-
       <fieldset className="pcf-field">
         <legend>Can you confirm you are 18 or over.</legend>
         <label className="pcf-radio"><input type="radio" name="over18" value="yes" /> Yes</label>
