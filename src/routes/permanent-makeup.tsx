@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Ph, Accordion, Concierge, SmartLink, WorkGallery, FeaturedIn, IMG, LINKS } from "@/components/site";
+import { PageHero, Ph, Accordion, Concierge, SmartLink, WorkGallery, FeaturedIn, IMG, LINKS, ConsultButton } from "@/components/site";
 
 export const Route = createFileRoute("/permanent-makeup")({
   head: () => ({ meta: [
@@ -61,7 +61,7 @@ function PriceList({ title, rows }: { title: string; rows: Row[] }) {
 }
 
 function PMU() {
-  const book = <SmartLink href={LINKS.consult} className="btn-solid">Book a consultation</SmartLink>;
+  const book = <ConsultButton />;
   const lookbook = <SmartLink href="#portfolio" className="btn-mono">View the lookbook</SmartLink>;
   return <div className="pmu">
     <PageHero title="Permanent makeup" image={IMG.products1} alt="Woman with a glowing natural makeup look">
