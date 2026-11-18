@@ -2322,3 +2322,44 @@ a.cl-card:hover .cl-go { transform: translateX(4px); }
 .booked-concierge a.booked-btn { font-family: var(--mono); font-size: 14px; font-weight: 400; text-decoration: none; padding: 8px 20px; border: 1px solid var(--ink); color: var(--ink); }
 .booked-concierge a.booked-btn:first-child { background: var(--ink); color: var(--on-ink); }
 .booked-concierge a.booked-btn:hover { opacity: .8; }
+
+
+/* /pmu-consultation — PMU Pre-Consult Eligibility Form (replaces JotForm) */
+.pcf { padding: clamp(32px, 5vw, 80px) var(--gutter) clamp(56px, 7vw, 112px); scroll-margin-top: 72px; }
+.pcf-card { max-width: 860px; margin: 0 auto; background: var(--ink); color: var(--on-ink); padding: clamp(28px, 4vw, 56px) clamp(20px, 4.5vw, 64px); display: flex; flex-direction: column; gap: clamp(26px, 3vw, 38px); box-shadow: 0 24px 48px -32px oklch(0 0 0 / 60%); }
+.pcf-head { padding-bottom: clamp(22px, 2.6vw, 32px); border-bottom: 1px solid oklch(1 0 0 / 35%); }
+.pcf-head h1 { font-family: var(--head); font-size: clamp(22px, 2.2vw, 28px); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 12px; }
+.pcf-head p { font-size: 15px; line-height: 1.7; opacity: .92; }
+.pcf-field { display: flex; flex-direction: column; gap: 10px; border: 0; margin: 0; padding: 0; min-width: 0; }
+.pcf-field > b, .pcf-field > legend { font-family: var(--head); font-size: 17px; font-weight: 500; margin-bottom: 4px; padding: 0; }
+.pcf-field i { color: oklch(0.65 0.2 25); font-style: normal; }
+.pcf-field input[type="text"], .pcf-field input:not([type]), .pcf-field input[type="tel"], .pcf-field input[type="email"] { width: 100%; max-width: 420px; font: inherit; font-size: 16px; padding: 12px 14px; border-radius: 4px; border: 1px solid transparent; background: #fff; color: var(--ink); }
+.pcf-two input:not([type]) { max-width: none; }
+.pcf-field input:focus { outline: 2px solid oklch(0.8 0.1 240); outline-offset: 1px; }
+.pcf-field input[aria-invalid="true"], .pcf-drop[aria-invalid="true"] { border-color: oklch(0.65 0.2 25); box-shadow: 0 0 0 1px oklch(0.65 0.2 25); }
+.pcf-field span { font-size: 13px; opacity: .85; }
+.pcf-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+.pcf-two label { display: flex; flex-direction: column; gap: 8px; }
+.pcf-radio { display: flex; align-items: center; gap: 12px; font-size: 16px; cursor: pointer; width: fit-content; }
+.pcf-radio input { appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #fff; margin: 0; cursor: pointer; display: grid; place-items: center; }
+.pcf-radio input::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--ink); transform: scale(0); transition: transform .15s; }
+.pcf-radio input:checked::after { transform: scale(1); }
+.pcf-radio input:focus-visible { outline: 2px solid oklch(0.8 0.1 240); outline-offset: 2px; }
+fieldset.pcf-field[aria-invalid="true"] legend { color: oklch(0.75 0.15 25); }
+.pcf-note { font-size: 16px; }
+.pcf-drop { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 28px 16px; background: oklch(0.985 0.005 260); color: oklch(0.35 0.03 260); border: 1px dashed oklch(0.6 0.02 260); border-radius: 2px; cursor: pointer; text-align: center; }
+.pcf-drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.pcf-drop svg { color: oklch(0.6 0.03 260); }
+.pcf-drop strong { font-family: var(--head); font-size: 20px; font-weight: 600; word-break: break-all; }
+.pcf-drop span { font-size: 15px; opacity: 1; color: oklch(0.5 0.02 260); }
+.pcf-drop.has-file strong { font-size: 16px; }
+.pcf-err { color: oklch(0.78 0.14 25); font-size: 14px; }
+.pcf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.pcf-submit { display: flex; flex-direction: column; align-items: center; gap: 12px; padding-top: clamp(22px, 2.6vw, 32px); border-top: 1px solid oklch(1 0 0 / 35%); margin-inline: calc(-1 * clamp(20px, 4.5vw, 64px)); }
+.pcf-submit button { min-width: 240px; padding: 16px 24px; font-family: var(--head); font-size: 17px; font-weight: 500; background: #fff; color: var(--ink); border: 0; border-radius: 3px; cursor: pointer; }
+.pcf-submit button:disabled { opacity: .6; cursor: wait; }
+.pcf-result { align-items: center; text-align: center; gap: 18px; padding-block: clamp(48px, 6vw, 88px); font-size: clamp(17px, 1.6vw, 22px); line-height: 1.45; }
+.pcf-result--big { gap: clamp(28px, 4vw, 52px); font-size: clamp(19px, 1.8vw, 24px); }
+.pcf-result a { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 600px) { .pcf-two { grid-template-columns: 1fr; } .pcf { padding-inline: 12px; } }
+
