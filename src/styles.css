@@ -2362,4 +2362,8 @@ fieldset.pcf-field[aria-invalid="true"] legend { color: oklch(0.75 0.15 25); }
 .pcf-result--big { gap: clamp(28px, 4vw, 52px); font-size: clamp(19px, 1.8vw, 24px); }
 .pcf-result a { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 600px) { .pcf-two { grid-template-columns: 1fr; } .pcf { padding-inline: 12px; } }
-
+.pcf-consent { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-size: 14px; line-height: 1.6; opacity: .92; }
+.pcf-consent input { appearance: none; flex: none; width: 20px; height: 20px; margin: 2px 0 0; border-radius: 3px; background: #fff; cursor: pointer; display: grid; place-items: center; }
+.pcf-consent input::after { content: ""; width: 10px; height: 6px; border: 2px solid var(--ink); border-top: 0; border-right: 0; transform: rotate(-45deg) scale(0); margin-top: -2px; transition: transform .15s; }
+.pcf-consent input:checked::after { transform: rotate(-45deg) scale(1); }
+.pcf-consent input:focus-visible { outline: 2px solid oklch(0.8 0.1 240); outline-offset: 2px; }
