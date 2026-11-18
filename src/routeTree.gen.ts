@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as CartRouteImport } from './routes/cart'
+import { Route as ConsultationBookedRouteImport } from './routes/consultation-booked'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MethodRouteImport } from './routes/method'
@@ -45,6 +46,11 @@ const AccountRoute = AccountRouteImport.update({
 const CartRoute = CartRouteImport.update({
   id: '/cart',
   path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsultationBookedRoute = ConsultationBookedRouteImport.update({
+  id: '/consultation-booked',
+  path: '/consultation-booked',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
@@ -147,6 +153,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
+  '/consultation-booked': typeof ConsultationBookedRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
@@ -171,6 +178,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
+  '/consultation-booked': typeof ConsultationBookedRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
@@ -196,6 +204,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
+  '/consultation-booked': typeof ConsultationBookedRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
@@ -222,6 +231,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/cart'
+    | '/consultation-booked'
     | '/forgot-password'
     | '/login'
     | '/method'
@@ -246,6 +256,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/cart'
+    | '/consultation-booked'
     | '/forgot-password'
     | '/login'
     | '/method'
@@ -270,6 +281,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/cart'
+    | '/consultation-booked'
     | '/forgot-password'
     | '/login'
     | '/method'
@@ -295,6 +307,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRoute
   CartRoute: typeof CartRoute
+  ConsultationBookedRoute: typeof ConsultationBookedRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   MethodRoute: typeof MethodRoute
@@ -337,6 +350,13 @@ declare module '@tanstack/react-router' {
       path: '/cart'
       fullPath: '/cart'
       preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consultation-booked': {
+      id: '/consultation-booked'
+      path: '/consultation-booked'
+      fullPath: '/consultation-booked'
+      preLoaderRoute: typeof ConsultationBookedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/forgot-password': {
@@ -479,6 +499,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRoute,
   CartRoute: CartRoute,
+  ConsultationBookedRoute: ConsultationBookedRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   MethodRoute: MethodRoute,
