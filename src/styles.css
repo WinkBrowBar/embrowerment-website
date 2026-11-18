@@ -2316,3 +2316,9 @@ a.cl-card:hover .cl-go { transform: translateX(4px); }
 .booked-concierge a { font-family: var(--head); font-size: 17px; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 .booked-concierge p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); max-width: 46ch; }
 .booked-concierge a + p { margin-top: 10px; }
+.booked-phone { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 4px; }
+.booked-phone > span { font-family: var(--head); font-size: 17px; font-weight: 600; }
+.booked-actions { display: flex; gap: 8px; }
+.booked-concierge a.booked-btn { font-family: var(--mono); font-size: 14px; font-weight: 400; text-decoration: none; padding: 8px 20px; border: 1px solid var(--ink); color: var(--ink); }
+.booked-concierge a.booked-btn:first-child { background: var(--ink); color: var(--on-ink); }
+.booked-concierge a.booked-btn:hover { opacity: .8; }
