@@ -14,3 +14,4 @@ export { WorkGallery } from "./WorkGallery";
 export { FeaturedIn } from "./FeaturedIn";
 export { StoreProvider, useStore } from "./store";
 export { CartDrawer, CartLines, CouponBox, Totals, WishButton, useCheckout } from "./commerce";
+export { ConsultButton } from "./ConsultGate";
