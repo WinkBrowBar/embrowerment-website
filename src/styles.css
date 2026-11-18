@@ -1230,3 +1230,34 @@ fieldset.pcf-field[aria-invalid="true"] legend { color: oklch(0.52 0.19 27); }
 .pcf-redirect-bar { grid-column: 1 / -1; height: 3px; background: var(--line); overflow: hidden; }
 .pcf-redirect-bar i { display: block; height: 100%; background: var(--ink); transform-origin: left; animation: pcf-bar linear forwards; }
 @keyframes pcf-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* PMU form: red required mark, quieter inline errors */
+.pcf { --pcf-red: oklch(0.55 0.2 27); }
+.pcf-field i { color: var(--pcf-red); font-style: normal; margin-left: 2px; }
+fieldset.pcf-field[aria-invalid="true"] legend { color: var(--ink); }
+fieldset.pcf-field[aria-invalid="true"] .pcf-radio input { border-color: var(--pcf-red); }
+.pcf-field input[aria-invalid="true"] { border-color: var(--pcf-red); box-shadow: inset 0 0 0 1px var(--pcf-red); }
+.pcf-err { display: flex; align-items: center; gap: 8px; margin-top: 2px; font-size: 13px; line-height: 1.4; color: var(--pcf-red); }
+.pcf-err::before { content: "!"; flex: none; display: grid; place-items: center; width: 16px; height: 16px; border-radius: 50%; background: var(--pcf-red); color: #fff; font-family: var(--head); font-size: 11px; font-weight: 700; }
+/* hide the grey hint while its error is showing */
+.pcf-field > input[aria-invalid="true"] + span { display: none; }
+
+/* PMU form — black card (JotForm look) in the site's fonts and sharp corners */
+.pcf-card { background: var(--ink); color: var(--on-ink); border-color: var(--ink); box-shadow: 0 24px 48px -32px oklch(0 0 0 / 60%); --pcf-red: oklch(0.72 0.17 25); }
+.pcf .pcf-card { --pcf-red: oklch(0.72 0.17 25); }
+.pcf-head { border-bottom-color: oklch(1 0 0 / 22%); }
+.pcf-head p, .pcf-field span, .pcf-consent { color: oklch(1 0 0 / 72%); }
+.pcf-field input[type="text"], .pcf-field input:not([type]), .pcf-field input[type="tel"], .pcf-field input[type="email"] { border-color: transparent; }
+.pcf-field input:focus { outline-color: var(--on-ink); }
+.pcf-radio input, .pcf-consent input { border-color: #fff; }
+.pcf-radio input:focus-visible, .pcf-consent input:focus-visible { outline-color: var(--on-ink); }
+fieldset.pcf-field[aria-invalid="true"] legend { color: var(--on-ink); }
+.pcf-submit { border-top-color: oklch(1 0 0 / 22%); }
+.pcf-submit .btn-solid { background: var(--on-ink); color: var(--ink); border-color: var(--on-ink); }
+.pcf-alert { background: oklch(0.3 0.06 25); border-color: var(--pcf-red); color: oklch(0.92 0.04 25); }
+.pcf-alert-help { color: oklch(1 0 0 / 72%); }
+.pcf-result a { color: var(--on-ink); }
+.pcf-redirect { background: oklch(1 0 0 / 6%); border-color: oklch(1 0 0 / 18%); color: oklch(1 0 0 / 78%); }
+.pcf-redirect-num { border-color: var(--on-ink); color: var(--on-ink); }
+.pcf-redirect-bar { background: oklch(1 0 0 / 18%); }
+.pcf-redirect-bar i { background: var(--on-ink); }
