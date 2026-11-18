@@ -17,6 +17,7 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MethodRouteImport } from './routes/method'
 import { Route as PermanentMakeupRouteImport } from './routes/permanent-makeup'
+import { Route as PmuConsultationRouteImport } from './routes/pmu-consultation'
 import { Route as PmuPoliciesRouteImport } from './routes/pmu-policies'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
@@ -71,6 +72,11 @@ const MethodRoute = MethodRouteImport.update({
 const PermanentMakeupRoute = PermanentMakeupRouteImport.update({
   id: '/permanent-makeup',
   path: '/permanent-makeup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PmuConsultationRoute = PmuConsultationRouteImport.update({
+  id: '/pmu-consultation',
+  path: '/pmu-consultation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PmuPoliciesRoute = PmuPoliciesRouteImport.update({
@@ -158,6 +164,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
   '/permanent-makeup': typeof PermanentMakeupRoute
+  '/pmu-consultation': typeof PmuConsultationRoute
   '/pmu-policies': typeof PmuPoliciesRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -183,6 +190,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
   '/permanent-makeup': typeof PermanentMakeupRoute
+  '/pmu-consultation': typeof PmuConsultationRoute
   '/pmu-policies': typeof PmuPoliciesRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -209,6 +217,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
   '/permanent-makeup': typeof PermanentMakeupRoute
+  '/pmu-consultation': typeof PmuConsultationRoute
   '/pmu-policies': typeof PmuPoliciesRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -236,6 +245,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/method'
     | '/permanent-makeup'
+    | '/pmu-consultation'
     | '/pmu-policies'
     | '/register'
     | '/reset-password'
@@ -261,6 +271,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/method'
     | '/permanent-makeup'
+    | '/pmu-consultation'
     | '/pmu-policies'
     | '/register'
     | '/reset-password'
@@ -286,6 +297,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/method'
     | '/permanent-makeup'
+    | '/pmu-consultation'
     | '/pmu-policies'
     | '/register'
     | '/reset-password'
@@ -312,6 +324,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   MethodRoute: typeof MethodRoute
   PermanentMakeupRoute: typeof PermanentMakeupRoute
+  PmuConsultationRoute: typeof PmuConsultationRoute
   PmuPoliciesRoute: typeof PmuPoliciesRoute
   RegisterRoute: typeof RegisterRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
@@ -385,6 +398,13 @@ declare module '@tanstack/react-router' {
       path: '/permanent-makeup'
       fullPath: '/permanent-makeup'
       preLoaderRoute: typeof PermanentMakeupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pmu-consultation': {
+      id: '/pmu-consultation'
+      path: '/pmu-consultation'
+      fullPath: '/pmu-consultation'
+      preLoaderRoute: typeof PmuConsultationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pmu-policies': {
@@ -504,6 +524,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   MethodRoute: MethodRoute,
   PermanentMakeupRoute: PermanentMakeupRoute,
+  PmuConsultationRoute: PmuConsultationRoute,
   PmuPoliciesRoute: PmuPoliciesRoute,
   RegisterRoute: RegisterRoute,
   ResetPasswordRoute: ResetPasswordRoute,
