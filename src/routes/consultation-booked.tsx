@@ -17,13 +17,11 @@ function ConsultationBooked() {
 
     <div className="booked-concierge">
       <h2>Embrowerment® Concierge</h2>
-      <div className="booked-phone">
-        <span>{CONCIERGE.phone}</span>
-        <div className="booked-actions">
-          <a href={`tel:${CONCIERGE.tel}`} className="booked-btn">Call</a>
-          <a href={`sms:${CONCIERGE.tel}`} className="booked-btn">Text</a>
-        </div>
-      </div>    
+      <p className="booked-phone">
+        {CONCIERGE.phone}
+        <span aria-hidden="true">·</span><a href={`tel:${CONCIERGE.tel}`}>Call</a>
+        <span aria-hidden="true">·</span><a href={`sms:${CONCIERGE.tel}`}>Text</a>
+      </p>
       <a href={`mailto:${CONCIERGE.email}`}>{CONCIERGE.email}</a>
       <a href="/">Embrowerment.com</a>
       <p>Concierge availability: Monday–Sunday, 2:00 PM – 7:00 PM EST.</p>
