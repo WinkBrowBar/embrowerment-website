@@ -14,9 +14,9 @@ export const Route = createFileRoute("/pmu-consultation")({
 });
 
 type Outcome = "eligible" | "under-18" | "accutane";
-type Field = "firstName" | "lastName" | "phone" | "email" | "accutane" | "heardFrom";
+type Field = "firstName" | "lastName" | "phone" | "email" | "accutane" | "over18" | "heardFrom";
 type Errors = Partial<Record<Field | "form", string>>;
-const FIELDS: Field[] = ["firstName", "lastName", "phone", "email", "accutane", "heardFrom"];
+const FIELDS: Field[] = ["firstName", "lastName", "phone", "email", "accutane", "over18", "heardFrom"];
 
 /** GHL booking calendar — "Embrowerment® PMU Virtual Consultation". Eligible visitors are sent here. */
 const GHL_BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/8urN9bqPMv8DmdgmODgV?backgroundColor=%23ffffff&primaryColor=%23040404FF&buttonText=Schedule+an+Embrowerment%C2%AE+PMU+Virtual+Consultation&showCalendarTitle=true&showCalendarDescription=true&showCalendarDetails=true&default=false";
@@ -50,6 +50,7 @@ function PmuConsultation() {
     if (!v("email")) errs.email = "Please enter your email address.";
     else if (!EMAIL_RE.test(v("email"))) errs.email = "Please enter a valid email address, e.g. name@example.com.";
     if (!v("accutane")) errs.accutane = "Please answer this question.";
+    if (!v("over18")) errs.over18 = "Please answer this question.";
     if (!v("heardFrom")) errs.heardFrom = "Please choose one option.";
     return errs;
   };
@@ -161,10 +162,11 @@ function PmuConsultation() {
         {err("accutane")}
       </fieldset>
 
-      <fieldset className="pcf-field">
-        <legend>Can you confirm you are 18 or over.</legend>
+      <fieldset className="pcf-field" {...inv("over18")} tabIndex={-1}>
+        <legend>Can you confirm you are 18 or over. <i>*</i></legend>
         <label className="pcf-radio"><input type="radio" name="over18" value="yes" /> Yes</label>
         <label className="pcf-radio"><input type="radio" name="over18" value="no" /> No</label>
+        {err("over18")}
       </fieldset>
 
       <fieldset className="pcf-field" {...inv("heardFrom")} tabIndex={-1}>
