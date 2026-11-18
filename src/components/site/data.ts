@@ -11,7 +11,9 @@ export const LINKS = {
   instagram: "https://www.instagram.com/embrowerment",
   tiktok: "https://tiktok.com/@embrowerment",
   facebook: "https://www.facebook.com/thisisumbreen",
-  consult: "https://form.jotform.com/260343754783059",
+  consult: "/pmu-consultation", // our own PMU Pre-Consult Eligibility Form (replaced JotForm)
+  /** GHL booking calendar for the "Embrowerment® PMU Virtual Consultation" — shown to eligible visitors. */
+  consultCalendar: "PASTE_GHL_CALENDAR_LINK_HERE",
   lookbook: "https://lookbook.embrowerment.com/",
 };
 
