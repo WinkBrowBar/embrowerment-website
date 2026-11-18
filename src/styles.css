@@ -786,6 +786,7 @@ img { display: block; max-width: 100%; }
 .work-filters button.on { background: var(--ink); color: var(--on-ink); }
 .work .more:hover { gap: .5em; opacity: 1; }
 
+
 .work-wall { columns: 4; column-gap: var(--g); }
 .work-item { position: relative; display: block; width: 100%; margin: 0 0 var(--g); padding: 7px; border: 0; background: var(--ink); break-inside: avoid; cursor: pointer; box-shadow: 0 12px 28px -18px oklch(0 0 0 / 45%); }
 .work-item img { display: block; width: 100%; height: auto; }
@@ -2305,3 +2306,13 @@ a.cl-card:hover .cl-go { transform: translateX(4px); }
 .cgate-x { position: absolute; top: 10px; right: 12px; width: 36px; height: 36px; border: 0; background: transparent; font-size: 26px; line-height: 1; color: var(--ink); cursor: pointer; }
 .cgate-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 @media (max-width: 560px) { .cgate-go { padding: 16px 18px; font-size: 15px; white-space: nowrap; } }
+
+/* /consultation-booked — GHL booking confirmation */
+.booked { display: flex; flex-direction: column; align-items: center; gap: clamp(20px, 2.4vw, 32px); text-align: center; padding: clamp(64px, 8vw, 128px) var(--gutter); min-height: calc(80svh - 58px); justify-content: center; border-bottom: 1px solid var(--line); }
+.booked .h-display { max-width: 22ch; font-size: clamp(30px, 3.6vw, 56px); line-height: 1.08; }
+.booked-note { font-size: 18px; line-height: 1.6; color: var(--ink-soft); max-width: 52ch; }
+.booked-concierge { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: clamp(8px, 1.5vw, 20px); padding: clamp(24px, 3vw, 36px) clamp(24px, 4vw, 56px); border: 1px solid var(--ink); background: var(--paper); }
+.booked-concierge h2 { font-family: var(--head); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+.booked-concierge a { font-family: var(--head); font-size: 17px; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.booked-concierge p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); max-width: 46ch; }
+.booked-concierge a + p { margin-top: 10px; }
