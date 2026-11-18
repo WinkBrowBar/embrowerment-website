@@ -1,13 +1,9 @@
 import { useEffect, useRef, useState, type FormEvent, type MouseEvent } from "react";
 import { LINKS } from "./data";
+import { LEADS_API, savedPmuEmail as savedEmail, savePmuEmail, track } from "@/lib/leads";
 
-/** umbreen backend (api.umbreen.com) — stores the email in its `pmu_leads` collection. */
-const LEADS_API = ((import.meta.env["VITE_LEADS_API_URL"] as string | undefined) || "https://api.umbreen.com").replace(/\/$/, "");
-const STORE_KEY = "emb_pmu_email";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-const savedEmail = () => { try { return localStorage.getItem(STORE_KEY) || ""; } catch { return ""; } };
-const formUrl = (email: string) => { const u = new URL(LINKS.consult); if (email) u.searchParams.set("email", email); return u.toString(); };
+const formUrl = (email: string) => (email ? `${LINKS.consult}?email=${encodeURIComponent(email)}` : LINKS.consult);
 
 /**
  * "Book a consultation" with a welcome email step in between:
@@ -25,7 +21,7 @@ export function ConsultButton({ className = "btn-solid", children = "Book a cons
   };
 
   return <>
-    <a href={LINKS.consult} target="_blank" rel="noreferrer" className={className} onClick={onClick}>{children}</a>
+    <a href={LINKS.consult} className={className} onClick={onClick}>{children}</a>
     {open && <ConsultGate onClose={() => setOpen(false)} />}
   </>;
 }
@@ -58,12 +54,10 @@ function ConsultGate({ onClose }: { onClose: () => void }) {
       keepalive: true,
     }).catch(() => { /* never block the visitor from booking */ });
 
-    try { localStorage.setItem(STORE_KEY, value); } catch { /* private mode */ }
-    const w = window as unknown as { dataLayer?: unknown[] };
-    (w.dataLayer = w.dataLayer || []).push({ event: "pmu_email_submitted" });
-
-    window.open(formUrl(value), "_blank", "noopener");
+    savePmuEmail(value);
+    track("pmu_email_submitted");
     onClose();
+    window.location.assign(formUrl(value));
   };
 
   return <div className="cgate" role="dialog" aria-modal="true" aria-labelledby="cgate-title" onClick={onClose}>
@@ -71,7 +65,7 @@ function ConsultGate({ onClose }: { onClose: () => void }) {
       <button type="button" className="cgate-x" onClick={onClose} aria-label="Close">×</button>
       <span className="eyebrow">Welcome to Embrowerment®</span>
       <h2 id="cgate-title" className="h-display">Let's begin your <em className="acad-hl">brow journey.</em></h2>
-      <p>Your consultation is personally conducted by Umbreen and is complimentary. Share your email and we'll open your consultation form and stay in touch about your appointment.</p>
+      <p>Your consultation is personally conducted by Umbreen and is complimentary. Share your email and we'll take you to your consultation form and stay in touch about your appointment.</p>
       <label className="cgate-field">
         <span>Email address</span>
         <input ref={input} type="email" name="email" autoComplete="email" inputMode="email" placeholder="you@example.com"
