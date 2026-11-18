@@ -17,6 +17,8 @@ type Outcome = "eligible" | "under-18" | "accutane";
 type Errors = Partial<Record<"firstName" | "lastName" | "phone" | "email" | "accutane" | "heardFrom" | "photo" | "form", string>>;
 
 const MAX_PHOTO_MB = 8;
+/** Optional marketing opt-in (unchecked by default). The exact wording is stored with each submission. */
+const CONSENT_TEXT = "Yes, I'd like to receive news, offers and promotions from Embrowerment® by email and text message. Message frequency varies; message and data rates may apply. Reply STOP to opt out of texts or unsubscribe from emails at any time. Consent is not a condition of any purchase or service.";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 function PmuConsultation() {
@@ -57,6 +59,7 @@ function PmuConsultation() {
     }
 
     fd.set("page", window.location.pathname);
+    if (fd.get("marketingConsent")) fd.set("consentText", CONSENT_TEXT);
     setSending(true);
     try {
       const res = await fetch(`${LEADS_API}/api/leads/pmu-consult`, { method: "POST", body: fd });
@@ -143,6 +146,11 @@ function PmuConsultation() {
         </label>
         {err("photo")}
       </div>
+
+      <label className="pcf-consent">
+        <input type="checkbox" name="marketingConsent" value="yes" />
+        <span>{CONSENT_TEXT}</span>
+      </label>
 
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="pcf-hp" aria-hidden="true" />
 
