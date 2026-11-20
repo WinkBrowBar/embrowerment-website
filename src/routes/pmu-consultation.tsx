@@ -214,9 +214,38 @@ function PmuConsultation() {
   </section>;
 }
 
+/**
+ * Shown under the "not right now" messages (under 18 / Accutane).
+ * Services link to winkbrowbar.com; the shop block links to the Embrowerment shop.
+ * TODO: set each service's exact page URL and image (image: "" shows a text tile).
+ */
+const ALTERNATIVES = [
+  { kind: "Service", title: "Brow Lamination", text: "Lifts and sets your natural brows for a fuller, groomed look that lasts 6–8 weeks.", cta: "Book at Wink Brow Bar", url: "https://www.winkbrowbar.com/", image: "" },
+  { kind: "Service", title: "Premium Tinting", text: "Longer-lasting colour with a soft shadow effect on the skin, lasting 14–21 days.", cta: "Book at Wink Brow Bar", url: "https://www.winkbrowbar.com/", image: "" },
+  { kind: "Service", title: "Brow Extensions", text: "Instantly fuller-looking brows, with no commitment.", cta: "Book at Wink Brow Bar", url: "https://www.winkbrowbar.com/", image: "" },
+  { kind: "Shop", title: "Shop Embrowerment®", text: "Brow pencils, styling wax and skincare from the Embrowerment® collection.", cta: "Shop now", url: "https://shop.embrowerment.com/collections/embrowerment", image: "https://shop.embrowerment.com/cdn/shop/files/03-Mechanical-Sculpting-Pencil.png?v=1793712418&width=800" },
+];
+
+function Alternatives() {
+  return <section className="pcf-alt" aria-labelledby="pcf-alt-title">
+    <h2 id="pcf-alt-title" className="pcf-alt-title">In the meantime, you may enjoy</h2>
+    <div className="pcf-alt-grid">
+      {ALTERNATIVES.map((a) => <a key={a.title} className="pcf-alt-card" href={a.url} target="_blank" rel="noopener noreferrer" onClick={() => track("pmu_alternative_click", { item: a.title })}>
+        <span className="pcf-alt-img">{a.image ? <img src={a.image} alt="" loading="lazy" /> : <b>{a.title}</b>}</span>
+        <span className="pcf-alt-body">
+          <small>{a.kind}</small>
+          <strong>{a.title}</strong>
+          <span>{a.text}</span>
+          <em>{a.cta} <span aria-hidden="true">→</span></em>
+        </span>
+      </a>)}
+    </div>
+  </section>;
+}
+
 function Result({ outcome }: { outcome: Outcome }) {
   if (outcome === "eligible") return <Eligible />;
-  return <div className="pcf-card pcf-result">
+  return <><div className="pcf-card pcf-result">
     <p><b>Thank you for your interest in the Embrowerment® Method PMU Service.</b></p>
     <p>This approach is a standardised procedure ensuring safety and quality results.</p>
     {outcome === "under-18" ? <>
@@ -226,7 +255,8 @@ function Result({ outcome }: { outcome: Outcome }) {
       <p>At this time, PMU services are not recommended for while you are on Accutane treatment.</p>
       <p>Please revisit six months after you finish treatment. We look forward to seeing you then.</p>
     </>}
-  </div>;
+  </div>
+  <Alternatives /></>;
 }
 
 /** Eligible: show the message, then send them to the GHL booking calendar after a short countdown. */
