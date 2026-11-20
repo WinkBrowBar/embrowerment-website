@@ -1278,3 +1278,20 @@ fieldset.pcf-sub[aria-invalid="true"] .pcf-chip span { border-color: var(--pcf-r
 .pcf-other input:focus { outline: 2px solid var(--on-ink); outline-offset: 2px; }
 .pcf-other input[aria-invalid="true"] { border-color: var(--pcf-red); box-shadow: inset 0 0 0 1px var(--pcf-red); }
 @media (max-width: 600px) { .pcf-sub { margin-left: 10px; padding-left: 14px; } }
+
+/* PMU form: alternatives shown after a "not right now" result */
+.pcf-alt { max-width: 1120px; margin: clamp(40px, 5vw, 72px) auto 0; }
+.pcf-alt-title { font-family: var(--head); font-size: clamp(26px, 2.8vw, 40px); font-weight: 700; letter-spacing: -0.03em; text-align: center; margin-bottom: clamp(20px, 2.4vw, 32px); }
+.pcf-alt-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.4vw, 20px); }
+.pcf-alt-card { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--ink); color: var(--ink); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.pcf-alt-card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px -20px oklch(0 0 0 / 45%); }
+.pcf-alt-img { display: grid; place-items: center; aspect-ratio: 4 / 5; background: var(--ink); color: var(--on-ink); overflow: hidden; border-bottom: 1px solid var(--ink); }
+.pcf-alt-img img { width: 100%; height: 100%; object-fit: cover; background: #fff; }
+.pcf-alt-img b { padding: 20px; font-family: var(--head); font-size: clamp(22px, 2vw, 28px); font-weight: 700; letter-spacing: -0.03em; text-align: center; line-height: 1.1; }
+.pcf-alt-body { display: flex; flex-direction: column; gap: 8px; padding: 18px; flex: 1; }
+.pcf-alt-body small { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.pcf-alt-body strong { font-family: var(--head); font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+.pcf-alt-body > span { font-size: 14px; line-height: 1.55; color: var(--ink-soft); }
+.pcf-alt-body em { margin-top: auto; padding-top: 10px; font-style: normal; font-family: var(--mono); font-size: 13px; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 900px) { .pcf-alt-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .pcf-alt-grid { grid-template-columns: 1fr; } .pcf-alt-img { aspect-ratio: 16 / 10; } }
