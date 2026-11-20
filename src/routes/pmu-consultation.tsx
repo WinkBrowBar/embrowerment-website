@@ -14,9 +14,11 @@ export const Route = createFileRoute("/pmu-consultation")({
 });
 
 type Outcome = "eligible" | "under-18" | "accutane";
-type Field = "firstName" | "lastName" | "phone" | "email" | "accutane" | "over18" | "heardFrom";
+type Field = "firstName" | "lastName" | "phone" | "email" | "accutane" | "over18" | "heardFrom" | "heardFromDetail" | "heardFromOther";
 type Errors = Partial<Record<Field | "form", string>>;
-const FIELDS: Field[] = ["firstName", "lastName", "phone", "email", "accutane", "over18", "heardFrom"];
+const FIELDS: Field[] = ["firstName", "lastName", "phone", "email", "accutane", "over18", "heardFrom", "heardFromDetail", "heardFromOther"];
+/** Shown when "Somewhere else" is picked. */
+const ELSEWHERE = [["google", "Google"], ["instagram", "Instagram"], ["tiktok", "TikTok"], ["youtube", "YouTube"], ["facebook", "Facebook"], ["other", "Other"]] as const;
 
 /** GHL booking calendar — "Embrowerment® PMU Virtual Consultation". Eligible visitors are sent here. */
 const GHL_BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/8urN9bqPMv8DmdgmODgV?backgroundColor=%23ffffff&primaryColor=%23040404FF&buttonText=Schedule+an+Embrowerment%C2%AE+PMU+Virtual+Consultation&showCalendarTitle=true&showCalendarDescription=true&showCalendarDetails=true&default=false";
@@ -30,6 +32,8 @@ function PmuConsultation() {
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState<Errors>({});
   const [sending, setSending] = useState(false);
+  const [heard, setHeard] = useState("");
+  const [heardDetail, setHeardDetail] = useState("");
   const [outcome, setOutcome] = useState<Outcome | null>(null);
   const top = useRef<HTMLDivElement>(null);
 
@@ -52,6 +56,10 @@ function PmuConsultation() {
     if (!v("accutane")) errs.accutane = "Please answer this question.";
     if (!v("over18")) errs.over18 = "Please answer this question.";
     if (!v("heardFrom")) errs.heardFrom = "Please choose one option.";
+    else if (v("heardFrom") === "somewhere-else") {
+      if (!v("heardFromDetail")) errs.heardFromDetail = "Please tell us where you heard about us.";
+      else if (v("heardFromDetail") === "other" && !v("heardFromOther")) errs.heardFromOther = "Please tell us where.";
+    }
     return errs;
   };
 
@@ -171,10 +179,21 @@ function PmuConsultation() {
 
       <fieldset className="pcf-field" {...inv("heardFrom")} tabIndex={-1}>
         <legend>how did you hear of this service? <i>*</i></legend>
-        <label className="pcf-radio"><input type="radio" name="heardFrom" value="wink-studio" /> In a Wink Brow Bar Studio</label>
-        <label className="pcf-radio"><input type="radio" name="heardFrom" value="online-search" /> Online search</label>
-        <label className="pcf-radio"><input type="radio" name="heardFrom" value="somewhere-else" /> Somewhere else</label>
+        {([["wink-studio", "In a Wink Brow Bar Studio"], ["online-search", "Online search"], ["somewhere-else", "Somewhere else"]] as const).map(([val, label]) =>
+          <label className="pcf-radio" key={val}><input type="radio" name="heardFrom" value={val} checked={heard === val} onChange={() => setHeard(val)} /> {label}</label>)}
         {err("heardFrom")}
+        {heard === "somewhere-else" && <fieldset className="pcf-sub" {...inv("heardFromDetail")} tabIndex={-1}>
+          <legend>Where did you hear about us? <i>*</i></legend>
+          <div className="pcf-chips">
+            {ELSEWHERE.map(([val, label]) =>
+              <label className="pcf-chip" key={val}><input type="radio" name="heardFromDetail" value={val} checked={heardDetail === val} onChange={() => setHeardDetail(val)} /><span>{label}</span></label>)}
+          </div>
+          {err("heardFromDetail")}
+          {heardDetail === "other" && <label className="pcf-other">
+            <input name="heardFromOther" maxLength={120} placeholder="Please tell us where" autoFocus {...inv("heardFromOther")} />
+            {err("heardFromOther")}
+          </label>}
+        </fieldset>}
       </fieldset>
 
       <label className="pcf-consent">
@@ -182,7 +201,7 @@ function PmuConsultation() {
         <span>{CONSENT_TEXT}</span>
       </label>
 
-      <input type="text" name="website" tabIndex={-1} autoComplete="off" className="pcf-hp" aria-hidden="true" />
+      <input type="text" name="hp_x7" tabIndex={-1} autoComplete="new-password" data-lpignore="true" data-1p-ignore className="pcf-hp" aria-hidden="true" />
 
       <div className="pcf-submit">
         {errors.form && <div className="pcf-alert" role="alert">
